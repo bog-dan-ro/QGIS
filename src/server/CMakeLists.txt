@@ -89,6 +89,7 @@ include_directories(
 )
 
 add_library(qgis_server SHARED ${QGIS_SERVER_SRCS} ${QGIS_SERVER_HDRS})
+add_library(qgis::server ALIAS qgis_server)
 
 # require c++17
 target_compile_features(qgis_server PRIVATE cxx_std_17)

@@ -86,6 +86,8 @@ endif()
 # qgis_native library
 
 add_library(qgis_native ${LIBRARY_TYPE} ${QGIS_NATIVE_SRCS} ${QGIS_NATIVE_HDRS})
+add_library(qgis::native ALIAS qgis_native)
+
 set_property(TARGET qgis_native PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 # require c++17

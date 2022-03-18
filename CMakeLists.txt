@@ -348,9 +348,23 @@ if(WITH_CORE)
     endif()
   endif()
 
+  include(FetchContent)
+
   # required
   find_package(Proj)
-  find_package(GEOS)
+  find_package(GEOS QUIET)
+  if (NOT TARGET GEOS::geos)
+      message(STATUS "GEOS was not found. Fetching from git")
+      FetchContent_Declare(
+          GEOS
+          GIT_REPOSITORY https://github.com/libgeos/geos.git
+          GIT_TAG main
+          GIT_SHALLOW TRUE
+          CMAKE_ARGS -DFORCE_STATIC_LIBS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+          )
+      FetchContent_MakeAvailable(GEOS)
+  endif()
+
   find_package(GDAL)
   find_package(Expat REQUIRED)
   find_package(Spatialindex REQUIRED)

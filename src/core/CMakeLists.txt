@@ -1976,7 +1976,7 @@ set(IMAGE_RCCS ../../images/images.qrc)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_library(qgis_core ${LIBRARY_TYPE} ${QGIS_CORE_SRCS} ${QGIS_CORE_HDRS} ${QGIS_CORE_PRIVATE_HDRS} ${IMAGE_RCCS})
-
+add_library(qgis::core ALIAS qgis_core)
 
 # require c++17
 target_compile_features(qgis_core PRIVATE cxx_std_17)
@@ -2174,7 +2174,7 @@ target_link_libraries(qgis_core
   ${QCA_LIBRARY}
   ${QTKEYCHAIN_LIBRARY}
   ${PROJ_LIBRARY}
-  ${GEOS_LIBRARY}
+  GEOS::geos
   ${GDAL_LIBRARY}
   ${SPATIALINDEX_LIBRARY}
   ${EXPAT_LIBRARY}

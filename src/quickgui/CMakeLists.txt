@@ -52,6 +52,8 @@ add_library(qgis_quick ${LIBRARY_TYPE}
     ${QGIS_QUICK_GUI_MOC_SRCS}
     ${QGIS_QUICK_GUI_HDRS})
 
+add_library(qgis::quick ALIAS qgis_quick)
+
 # require c++17
 target_compile_features(qgis_quick PRIVATE cxx_std_17)
 

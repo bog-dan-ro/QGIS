@@ -1449,6 +1449,7 @@ endif()
 add_library(qgis_gui ${LIBRARY_TYPE}
   ${QGIS_GUI_SRCS} ${QGIS_GUI_HDRS} ${QGIS_GUI_PRIVATE_HDRS}
 )
+add_library(qgis::gui ALIAS qgis_gui)
 
 # require c++17
 target_compile_features(qgis_gui PRIVATE cxx_std_17)
